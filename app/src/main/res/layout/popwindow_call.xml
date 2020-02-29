@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#40000000">
+
+    <Button
+        android:id="@+id/shangjia"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/btn_white_circle"
+        android:gravity="center"
+        android:text="联系商家"
+        android:textColor="@color/appcolor"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/kefu"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_above="@+id/shangjia"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/btn_white_circle"
+        android:gravity="center"
+        android:text="联系客服"
+        android:textColor="@color/appcolor"
+        android:textSize="14sp" />
+</RelativeLayout>

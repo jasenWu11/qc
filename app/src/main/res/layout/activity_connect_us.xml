@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/title_layout"/>
+
+    <RelativeLayout
+        android:background="@drawable/card_check_scan_shape"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="50dp"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/agentR"
+                android:layout_width="match_parent"
+                android:layout_height="24dp">
+                
+                <ImageView
+                    android:id="@+id/agentImage"
+                    android:background="#0f0f0f"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
+
+                <View
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/agentImage"
+                    android:layout_marginLeft="6dp"
+                    android:background="@color/blue_1e"
+                    android:layout_height="1dp"
+                    style="@style/HorizontalLines"/>
+
+                <TextView
+                    android:id="@+id/agentText"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/agentImage"
+                    android:layout_marginLeft="16dp"
+                    android:text="400-1111-000(渠道代理合作电话)"
+                    android:textColor="@color/blue_1e"
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/serviceR"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="24dp">
+
+                <ImageView
+                    android:id="@+id/serviceImage"
+                    android:background="#0f0f0f"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
+
+                <View
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/serviceImage"
+                    android:layout_marginLeft="6dp"
+                    android:background="@color/blue_1e"
+                    android:layout_height="1dp"
+                    style="@style/HorizontalLines"/>
+
+                <TextView
+                    android:id="@+id/serviceText"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/serviceImage"
+                    android:layout_marginLeft="16dp"
+                    android:text="400-1111-000(客服电话)"
+                    android:textColor="@color/blue_1e"
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/schoolR"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="24dp">
+
+                <ImageView
+                    android:id="@+id/schoolImage"
+                    android:background="#0f0f0f"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
+
+                <View
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/schoolImage"
+                    android:layout_marginLeft="6dp"
+                    android:background="@color/blue_1e"
+                    android:layout_height="1dp"
+                    style="@style/HorizontalLines"/>
+
+                <TextView
+                    android:id="@+id/schoolText"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/schoolImage"
+                    android:layout_marginLeft="16dp"
+                    android:text="xiaoyuan@126.com(校园合作)"
+                    android:textColor="@color/blue_1e"
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/adR"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="24dp">
+
+                <ImageView
+                    android:id="@+id/adImage"
+                    android:background="#0f0f0f"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
+
+                <View
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/adImage"
+                    android:layout_marginLeft="6dp"
+                    android:background="@color/blue_1e"
+                    android:layout_height="1dp"
+                    style="@style/HorizontalLines"/>
+
+                <TextView
+                    android:id="@+id/adText"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/adImage"
+                    android:layout_marginLeft="16dp"
+                    android:text="广告@123.com(广告合作)"
+                    android:textColor="@color/blue_1e"
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/mediaR"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="24dp">
+
+                <ImageView
+                    android:id="@+id/mediaImage"
+                    android:background="#0f0f0f"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
+
+                <View
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/mediaImage"
+                    android:layout_marginLeft="6dp"
+                    android:background="@color/blue_1e"
+                    android:layout_height="1dp"
+                    style="@style/HorizontalLines"/>
+
+                <TextView
+                    android:id="@+id/mediaText"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/mediaImage"
+                    android:layout_marginLeft="16dp"
+                    android:text="媒体@123.com(媒体资源合作)"
+                    android:textColor="@color/blue_1e"
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

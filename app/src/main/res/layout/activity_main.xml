@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fragmentcontent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RadioGroup
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <RadioButton
+            android:id="@+id/home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawablePadding="1dp"
+            android:drawableTop="@drawable/tab_home_selector"
+            android:gravity="center"
+            android:text="首页"
+            android:textColor="@drawable/tab_textcolor_selector"
+            android:textSize="9dp" />
+
+        <RadioButton
+            android:id="@+id/recruit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="1dp"
+            android:drawableTop="@drawable/tab_recruit_selector"
+            android:gravity="center"
+            android:text="招聘"
+            android:textColor="@drawable/tab_textcolor_selector"
+            android:textSize="9dp" />
+
+        <RadioButton
+            android:id="@+id/find"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="1dp"
+            android:drawableTop="@mipmap/faxian"
+            android:gravity="center"
+            android:text="发现"
+            android:textColor="@drawable/tab_textcolor_selector"
+            android:textSize="9dp" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <RadioButton
+                android:id="@+id/news"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:button="@null"
+                android:drawablePadding="1dp"
+                android:drawableTop="@drawable/tab_news_selector"
+                android:gravity="center"
+                android:text="消息"
+                android:textColor="@drawable/tab_textcolor_selector"
+                android:textSize="9dp" />
+
+            <TextView
+                android:id="@+id/newscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/btn_red_ring"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="10"
+                android:textColor="#fff"
+                android:textSize="7sp"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <RadioButton
+            android:id="@+id/person"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="1dp"
+            android:drawableTop="@drawable/tab_person_selector"
+            android:gravity="center"
+            android:text="我的"
+            android:textColor="@drawable/tab_textcolor_selector"
+            android:textSize="9dp" />
+    </RadioGroup>
+</LinearLayout>

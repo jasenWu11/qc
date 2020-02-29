@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.com.qc.yinter.SwipeToRefreshHeaderView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/refresh_header_height">
+
+        <ImageView
+            android:id="@+id/header_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/header_text"
+            android:background="@mipmap/twitter_pull_arrow" />
+
+        <ImageView
+            android:id="@+id/header_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/header_text"
+            android:background="@mipmap/qq_refresh_success" />
+
+        <TextView
+            android:id="@+id/header_text"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+            android:gravity="center" />
+
+        <ProgressBar
+            android:id="@+id/header_progressBar"
+            style="?android:attr/progressBarStyleSmallInverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/header_text" />
+
+    </RelativeLayout>
+
+</cn.com.qc.yinter.SwipeToRefreshHeaderView>

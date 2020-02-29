@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        multiDexEnabled true
+        applicationId "cn.com.qc"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            //推送，选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'x86'
+        }
+    }
+//    dexOptions {
+//        javaMaxHeapSize "4g"
+//        preDexLibraries = false
+//        additionalParameters += '--multi-dex'
+//        additionalParameters += '--set-max-idx-number=35000'
+//        //每个包内方法数上限（根据实际项目配置这个数，来适配4.0-4.4一些低端机型，因为拆分的dex太大，这些低端机型加载不了dex）
+//        additionalParameters += '--minimal-main-dex'
+//    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    //指定打包后应用名称
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            def fileName
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                if (variant.buildType.name.equals('release')) {
+                    fileName = "启程.apk"//_${defaultConfig.versionName}
+                } else if (variant.buildType.name.equals('debug')) {
+                    fileName = "启程_${defaultConfig.versionName}_debug.apk"
+                }
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    testCompile 'junit:junit:4.12'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    compile 'com.jakewharton:butterknife-compiler:8.8.1'
+    configurations.all {
+        resolutionStrategy.force 'com.android.support:support-annotations:25.0.0'
+    }
+    compile 'com.android.support:recyclerview-v7:25.0.0'
+    compile 'com.github.Othershe:CalendarView:1.0.1'
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'com.lzy.net:okgo:3.0.4'
+    compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.lzy.widget:imagepicker:0.5.3'
+    compile 'com.amap.api:location:latest.integration'
+    compile files('libs/ShareSDK-Wechat-Moments-3.1.2.jar')
+    compile files('libs/ShareSDK-Wechat-Core-3.1.2.jar')
+    compile files('libs/ShareSDK-Wechat-3.1.2.jar')
+    compile files('libs/ShareSDK-SinaWeibo-3.1.2.jar')
+    compile files('libs/ShareSDK-QZone-3.1.2.jar')
+    compile files('libs/ShareSDK-QQ-3.1.2.jar')
+    compile files('libs/ShareSDK-Core-3.1.2.jar')
+    compile files('libs/ShareSDK-Alipay-Moments-3.1.2.jar')
+    compile files('libs/ShareSDK-Alipay-Core-3.1.2.jar')
+    compile files('libs/ShareSDK-Alipay-3.1.2.jar')
+    compile files('libs/MobTools-2017.1201.1507.jar')
+    compile files('libs/MobCommons-2017.1201.1507.jar')
+    compile 'com.youth.banner:banner:1.1.5'
+    compile 'com.android.support:design:25.0.0'
+    compile "com.android.support:multidex:1.0.0"
+    // 推送
+    compile 'com.aliyun.ams:alicloud-android-push:3.0.11@aar'
+    compile 'com.aliyun.ams:alicloud-android-utdid:1.1.5.3'
+    compile 'com.aliyun.ams:alicloud-android-ut:5.1.0'
+    compile files('libs/SmartAndroid2.0.jar')
+    compile files('libs\\bcpkix-jdk15on-1.48.jar')
+}

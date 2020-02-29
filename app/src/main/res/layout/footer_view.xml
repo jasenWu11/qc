@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.com.qc.yinter.SwipeToLoadMoreFooterView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#fff"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/footer_success"
+            android:layout_toLeftOf="@+id/footer_text"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/qq_refresh_success"
+            />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/footer_progressBar"
+            android:layout_toLeftOf="@+id/footer_text"
+            style="?android:attr/progressBarStyleSmallInverse"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/footer_text"
+            android:layout_width="150dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</cn.com.qc.yinter.SwipeToLoadMoreFooterView>
