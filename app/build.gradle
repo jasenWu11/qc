@@ -93,4 +93,6 @@ dependencies {
     compile 'com.aliyun.ams:alicloud-android-ut:5.1.0'
     compile files('libs/SmartAndroid2.0.jar')
     compile files('libs\\bcpkix-jdk15on-1.48.jar')
+    //JSON解析
+    compile 'com.alibaba:fastjson:1.2.56'
 }

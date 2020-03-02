@@ -88,7 +88,7 @@ public class MyProposerFragment extends Fragment implements OnRefreshListener, O
                             JSONObject jsonObject = new JSONObject(response.body());
                             System.out.println("返回结果"+jsonObject);
                             int infoCode = jsonObject.getInt("status");
-                            if (infoCode == 1) {
+                            if (infoCode == 0) {
                                 String data = jsonObject.getString("data");
                                 JSONObject jsonObject1 = new JSONObject(data);
                                 String list = jsonObject1.getString("list");
