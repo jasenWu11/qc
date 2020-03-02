@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/shoot"
+        android:padding="10dp"
+        android:text="拍摄"
+        android:gravity="center"
+        android:textSize="13sp"
+        android:background="@color/e0"
+        android:textColor="@color/eight_and_nine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:background="@color/cc"
+        style="@style/HorizontalLines"/>
+
+    <TextView
+        android:id="@+id/photo"
+        android:padding="10dp"
+        android:text="从相册里上传"
+        android:gravity="center"
+        android:textSize="13sp"
+        android:background="@color/e0"
+        android:textColor="@color/eight_and_nine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:background="@color/cc"
+        style="@style/HorizontalLines"/>
+
+    <TextView
+        android:id="@+id/cancel"
+        android:padding="10dp"
+        android:text="取消"
+        android:gravity="center"
+        android:textSize="13sp"
+        android:background="@color/ff"
+        android:textColor="@color/eight_and_nine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

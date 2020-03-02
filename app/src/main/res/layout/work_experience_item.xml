@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="就职公司："
+        android:textColor="@color/three_repeat"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="职位："
+        android:textColor="@color/three_repeat"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/enterDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="入职时间："
+        android:textColor="@color/three_repeat"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/endDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="离职时间："
+        android:textColor="@color/three_repeat"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/workContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="工作内容："
+        android:textColor="@color/three_repeat"
+        android:textSize="12sp" />
+
+</LinearLayout>

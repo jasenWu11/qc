@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="appcolor">#1EA3D3</color>
+
+
+    <color name="ed">#EDEDED</color>
+    <color name="ff">#FFFFFF</color>
+    <color name="cc">#CCCCCC</color>
+    <color name="ec">#ECEBEB</color>
+    <color name="e0">#E0E0E0</color>
+    <color name="blue_1e">#1EA3D3</color>
+    <color name="eight_and_nine">#898989</color>
+    <color name="three_repeat">#333333</color>
+    <color name="six_and_five">#656565</color>
+    <color name="six_repeat">#666666</color>
+</resources>

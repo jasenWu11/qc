@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ff"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/companyName"
+            android:textSize="13sp"
+            android:singleLine="true"
+            android:gravity="center_horizontal"
+            android:textColor="@color/three_repeat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/companyProperty"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:drawableLeft="@mipmap/shangshi"
+                android:textColor="@color/six_and_five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/companyPeopleNum"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:drawableLeft="@mipmap/renshu"
+                android:textColor="@color/six_and_five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/companyDo"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:drawableLeft="@mipmap/hulianwang"
+                android:textColor="@color/six_and_five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:background="@color/ed"
+        android:layout_height="12dp"
+        style="@style/HorizontalLines"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:drawableLeft="@mipmap/xinxi"
+            android:gravity="center_vertical"
+            android:textSize="12sp"
+            android:textColor="@color/three_repeat"
+            android:text=" 公司介绍"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/companyIntroduction"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/eight_and_nine"
+            android:textSize="12sp"
+            android:maxLines="3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@mipmap/adress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_marginLeft="3dp"
+                android:textSize="12sp"
+                android:textColor="@color/three_repeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:background="@color/ed"
+        android:layout_height="12dp"
+        style="@style/HorizontalLines"/>
+
+    <TextView
+        android:padding="10dp"
+        android:textColor="@color/three_repeat"
+        android:textSize="12sp"
+        android:text="该公司招聘职位"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:background="@color/e0"
+        style="@style/HorizontalLines"/>
+    
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

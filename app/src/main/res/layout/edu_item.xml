@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/beginTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="入学时间："
+        android:textColor="@color/three_repeat"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/endTiem"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="毕业时间："
+        android:textColor="@color/three_repeat"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/schoolName"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="院校名称："
+        android:textColor="@color/three_repeat"
+        android:textSize="12sp" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/education"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="学历："
+        android:textColor="@color/three_repeat"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/major"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="专业："
+        android:textColor="@color/three_repeat"
+        android:textSize="12sp" />
+
+</LinearLayout>

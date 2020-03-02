@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff">
+
+    <TextView
+        android:id="@+id/job"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toLeftOf="@+id/price"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="招聘职位：安卓"
+        android:textColor="#333"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/job"
+        android:layout_below="@+id/job"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@+id/price"
+        android:text="公司名称：学锋志愿"
+        android:textColor="#333"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/company"
+        android:layout_below="@+id/company"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="工作地点：北京市大兴区"
+        android:textColor="#898989"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/location"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_toRightOf="@+id/location"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="申请日期：2017-10-09"
+        android:textColor="#898989"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/job"
+        android:layout_marginRight="15dp"
+        android:text="150/日"
+        android:textColor="#333"
+        android:textSize="14sp" />
+</RelativeLayout>

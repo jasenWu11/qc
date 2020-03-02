@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="16dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/posName"
+            android:text="职位名称:"
+            android:textSize="12sp"
+            android:textColor="@color/three_repeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:text="150/日"
+            android:textSize="12sp"
+            android:textColor="@color/three_repeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/companyName"
+        android:layout_marginTop="5dp"
+        android:text="公司名称:"
+        android:textSize="12sp"
+        android:textColor="@color/three_repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/address"
+            android:text="地点:北京"
+            android:singleLine="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="12sp"
+            android:textColor="@color/eight_and_nine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="日期:"
+            android:id="@+id/date"
+            android:textSize="12sp"
+            android:textColor="@color/eight_and_nine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</LinearLayout>

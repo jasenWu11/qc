@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">启程</string>
+
+    <string name="home_choose_business_type">请选择企业类型</string>
+    <string name="home_choose_trade_type">请选择行业类型</string>
+    <string name="home_choose_work_type">请选择工作类型</string>
+    <string name="home_choose_date_type">请选择日期</string>
+
+    <string name="register_agree">我已阅读并同意\“用户协议\”</string>
+</resources>

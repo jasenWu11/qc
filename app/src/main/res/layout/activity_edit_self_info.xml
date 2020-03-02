@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffffff"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout"/>
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/iconLinear"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                
+                <ImageView
+                    android:id="@+id/icon"
+                    android:src="@mipmap/head_img"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="13dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="58dp"
+                    android:layout_height="58dp" />
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:layout_gravity="center_vertical"
+                    android:text="设置头像"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <View
+                style="@style/HorizontalLines"
+                android:layout_height="12dp"
+                android:background="@color/ed"
+                />
+
+            <LinearLayout
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="@color/blue_1e"
+                    android:textSize="13sp"
+                    android:layout_marginTop="12dp"
+                    android:text="基本信息"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/name"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="姓名"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:id="@+id/sex"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="性别(男/女)"
+                    android:digits="男女"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:id="@+id/outYear"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="出生年月(例:1988.11.12)"
+                    android:digits="1234567890."
+                    android:inputType="numberDecimal"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/maxEdu"
+                    android:textSize="12sp"
+                    android:singleLine="true"
+                    android:textColor="@color/three_repeat"
+                    android:hint="最高学历"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:id="@+id/workTime"
+                    android:textSize="12sp"
+                    android:singleLine="true"
+                    android:textColor="@color/three_repeat"
+                    android:hint="工作年限"
+                    android:inputType="number"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/phone"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="联系电话"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <TextView
+                    android:id="@+id/phoneText"
+                    android:text="联系电话"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="@null"
+                    android:hint="电子邮箱"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:textColor="@color/three_repeat"
+                    android:textSize="12sp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <TextView
+                    android:id="@+id/city"
+                    android:clickable="true"
+                    android:textSize="12sp"
+                    android:drawableRight="@mipmap/right"
+                    android:textColor="@color/three_repeat"
+                    android:gravity="center_vertical"
+                    android:hint="所在城市"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <TextView
+                    android:textColor="@color/blue_1e"
+                    android:textSize="13sp"
+                    android:layout_marginTop="12dp"
+                    android:text="教育经历"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/school"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="毕业院校"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:id="@+id/major"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="专业"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:id="@+id/beginDate"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="入学日期(例:2006.6.30)"
+                    android:digits="1234567890."
+                    android:inputType="numberDecimal"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:id="@+id/graduateDate"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="毕业日期(例:2006.6.30)"
+                    android:digits="1234567890."
+                    android:inputType="numberDecimal"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:id="@+id/maxEdu1"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="学历"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <TextView
+                    android:textColor="@color/blue_1e"
+                    android:textSize="13sp"
+                    android:layout_marginTop="12dp"
+                    android:text="工作经历"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/company"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="就职公司"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:id="@+id/position"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="职位"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:id="@+id/enterDate"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="入职时间(例:2006.6.30)"
+                    android:digits="1234567890."
+                    android:inputType="numberDecimal"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:id="@+id/endDate"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="离职时间(例:2006.6.30)"
+                    android:digits="1234567890."
+                    android:inputType="numberDecimal"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:textSize="12sp"
+                    android:text="工作内容"
+                    android:textColor="@color/eight_and_nine"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <EditText
+                    android:padding="7dp"
+                    android:gravity="left|top"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:background="@drawable/edit_self_info_ed_shape"
+                    android:id="@+id/workContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp" />
+
+                <TextView
+                    android:textColor="@color/blue_1e"
+                    android:textSize="13sp"
+                    android:layout_marginTop="12dp"
+                    android:text="期望工作"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/wantPos"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="期望岗位"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/workType"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="是否全职"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    android:visibility="gone"
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/wantCity"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="期望工作城市"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    android:visibility="gone"
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <EditText
+                    android:id="@+id/wantMoney"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:hint="期望月薪"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp" />
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:background="@color/ed"
+                    />
+
+                <TextView
+                    android:textSize="12sp"
+                    android:textColor="@color/eight_and_nine"
+                    android:gravity="center_vertical"
+                    android:text="一句话介绍自己"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp" />
+
+                <EditText
+                    android:layout_marginBottom="80dp"
+                    android:gravity="left|top"
+                    android:padding="7dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/three_repeat"
+                    android:background="@drawable/edit_self_info_ed_shape"
+                    android:id="@+id/introduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

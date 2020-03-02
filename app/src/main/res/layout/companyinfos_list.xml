@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/ri" />
+
+    <TextView
+        android:id="@+id/job"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/imageView"
+        android:text="安卓"
+        android:textColor="#333"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/job"
+        android:layout_marginRight="10dp"
+        android:text="100/日"
+        android:textColor="#333"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_below="@+id/imageView"
+        android:layout_marginBottom="10dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="日期：2017-12-08/2017-12-10"
+        android:textColor="#898989"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/date"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/people"
+        android:layout_toRightOf="@+id/date"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="地点：北京市大兴区"
+        android:textColor="#898989"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/people"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/location"
+        android:layout_alignRight="@+id/price"
+        android:text="人数：20"
+        android:textColor="#898989"
+        android:textSize="13sp" />
+</RelativeLayout>

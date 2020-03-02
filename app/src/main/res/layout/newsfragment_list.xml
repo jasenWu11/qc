@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/job"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toLeftOf="@+id/guanzhu"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="招聘职位：安卓"
+            android:textColor="#333"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/job"
+            android:layout_below="@+id/job"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/guanzhu"
+            android:text="公司名称：学锋志愿"
+            android:textColor="#333"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/people"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/company"
+            android:layout_below="@+id/company"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="5dp"
+            android:text="招聘人数：10"
+            android:textColor="#898989"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/people"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/guanzhu"
+            android:layout_toRightOf="@+id/people"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="工作地点：北京市"
+            android:textColor="#898989"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/guanzhu"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/btn_blue_ring"
+            android:gravity="center"
+            android:text="收藏"
+            android:textColor="#fff"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#E0E0E0" />
+</LinearLayout>
