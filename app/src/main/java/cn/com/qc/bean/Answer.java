@@ -2,7 +2,7 @@ package cn.com.qc.bean;
 
 public class Answer {
     //答案选项
-    private Integer answerId;
+    private String color;
     //答案主体
     private String answer_content;
     //答案是否被解答
@@ -15,11 +15,11 @@ public class Answer {
     public void setAns_state(int ans_state) {
         this.ans_state = ans_state;
     }
-    public Integer getAnswerId() {
-        return answerId;
+    public String getAnswerColor() {
+        return color;
     }
-    public void setAnswerId(int answerId) {
-        this.answerId = answerId;
+    public void setAnswerColor(String answerId) {
+        this.color = answerId;
     }
     public String getAnswer_content() {
         return answer_content;

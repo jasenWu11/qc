@@ -1,9 +1,7 @@
 package cn.com.qc.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.tandong.sa.tools.AssistTool;
 
 import butterknife.BindView;
@@ -28,18 +25,15 @@ import cn.com.qc.help.Helps;
 import cn.com.qc.help.NetUrl;
 import cn.com.qc.leeactivity.CollectCompanyActivity;
 import cn.com.qc.leeactivity.CollectJobActivity;
+import cn.com.qc.main.IntroFileActivity;
 import cn.com.qc.leeactivity.MyJobActivity;
 import cn.com.qc.main.CardCheckActivity;
-import cn.com.qc.main.CollectActivity;
 import cn.com.qc.main.ConnectUsActivity;
 import cn.com.qc.main.LoginActivity;
 import cn.com.qc.main.MyIntroductionActivity;
 import cn.com.qc.main.RegisterActivity;
-import cn.com.qc.view.CropCircleTransformation;
 import cn.com.qc.yinter.BaseInter;
 import cn.com.qc.yinter.PersonDataListener;
-import cn.com.qc.ypresenter.BasePresenter;
-import cn.com.qc.ypresenter.LoginPresenter;
 import cn.com.qc.ypresenter.PersonPresener;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -138,7 +132,7 @@ public class PersonFragment extends Fragment implements BaseInter, PersonDataLis
 
     @OnClick({R.id.myIntro, R.id.login, R.id.register, R.id.myCheck, R.id.myCollect, R.id.quit,
             R.id.alreadyApply, R.id.waitJob, R.id.waitPay, R.id.alreadyPay, R.id.myPos, R.id.connectR
-            ,R.id.myRecruit})
+            ,R.id.myRecruit,R.id.introFile})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.myIntro:
@@ -155,6 +149,9 @@ public class PersonFragment extends Fragment implements BaseInter, PersonDataLis
                     intent = new Intent(getActivity(), CollectCompanyActivity.class);
                     startActivity(intent);
                 }
+                break;
+            case R.id.introFile:
+                checkIfLogin(IntroFileActivity.class);
                 break;
             case R.id.login:
                 Intent loginIntent = new Intent(getActivity(), LoginActivity.class);

@@ -24,16 +24,23 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.model.Response;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.com.qc.R;
 import cn.com.qc.bean.Answer;
 import cn.com.qc.bean.Page;
 import cn.com.qc.bean.Quesition;
+import cn.com.qc.help.NetUrl;
+import cn.com.qc.javabean.JobInfo;
 
 public class Questionnaire extends Activity {
     private LinearLayout test_layout;
@@ -65,123 +72,62 @@ public class Questionnaire extends Activity {
         button.setOnClickListener(new submitOnClickListener(page));
     }
     private void initDate() {
-        String result = "{\n" +
-                "    \"status\": 0,\n" +
-                "    \"msg\": \"OK\",\n" +
-                "    \"data\": {\n" +
-                "        \"records\": [\n" +
-                "            {\n" +
-                "                \"createTime\": \"2020-02-15 00:52:29\",\n" +
-                "                \"id\": 29,\n" +
-                "                \"item\": \"[{\\\"value\\\":\\\"q\\\",\\\"grade\\\":\\\"2\\\"}]\",\n" +
-                "                \"grade\": null,\n" +
-                "                \"multiple\": 0,\n" +
-                "                \"title\": \"点击选项可展开选项\"\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"createTime\": \"2020-02-14 23:01:18\",\n" +
-                "                \"id\": 26,\n" +
-                "                \"item\": \"[{\\\"value\\\":\\\"aa\\\",\\\"grade\\\":\\\"2\\\"}]\",\n" +
-                "                \"grade\": null,\n" +
-                "                \"multiple\": 0,\n" +
-                "                \"title\": \"修改 时新增\"\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"createTime\": \"2020-02-14 19:46:44\",\n" +
-                "                \"id\": 25,\n" +
-                "                \"item\": \"[{\\\"value\\\":\\\"qweqw\\\",\\\"grade\\\":\\\"2\\\"}]\",\n" +
-                "                \"grade\": null,\n" +
-                "                \"multiple\": 0,\n" +
-                "                \"title\": \"woshiwenti 修改\"\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"createTime\": \"2020-02-14 19:44:33\",\n" +
-                "                \"id\": 24,\n" +
-                "                \"item\": \"[{\\\"value\\\":\\\"常用于主动操作后的反馈提示。与 Notification 的区别是后者更多用于系统级通知的被动提醒。常用于主动操作后的反馈提示。与 Notification 的区别是后者更多用于系统级通知的被动提醒。常用于主动操作后的反馈提示。与 Notification 的区别是后者更多用于系统级通知的被动提醒。常用于主动操作后的反馈提示。与 Notification 的区别是后者更多用于系统级通知的被动提醒。\\\",\\\"grade\\\":\\\"12\\\"}]\",\n" +
-                "                \"grade\": null,\n" +
-                "                \"multiple\": 0,\n" +
-                "                \"title\": \"常用于主动操作后的反馈提示。223\"\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"createTime\": \"2020-02-14 19:31:37\",\n" +
-                "                \"id\": 20,\n" +
-                "                \"item\": \"[{\\\"value\\\":\\\"不要你觉得\\\",\\\"grade\\\":\\\"2\\\"},{\\\"value\\\":\\\"我要我觉得\\\",\\\"grade\\\":\\\"3\\\"},{\\\"value\\\":\\\"武汉加油\\\",\\\"grade\\\":\\\"9999\\\"}]\",\n" +
-                "                \"grade\": null,\n" +
-                "                \"multiple\": 0,\n" +
-                "                \"title\": \"测试新增\"\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"createTime\": \"2020-02-14 18:51:04\",\n" +
-                "                \"id\": 2,\n" +
-                "                \"item\": \"[{\\\"value\\\":\\\"A科幻\\\",\\\"grade\\\":\\\"1\\\"},{\\\"value\\\":\\\"B剧情\\\",\\\"grade\\\":\\\"2\\\"},{\\\"value\\\":\\\"C动作\\\",\\\"grade\\\":\\\"3\\\"}]\",\n" +
-                "                \"grade\": null,\n" +
-                "                \"multiple\": 1,\n" +
-                "                \"title\": \"你喜欢什么类型的电影 bianji 33\"\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"createTime\": \"2020-02-14 18:51:01\",\n" +
-                "                \"id\": 1,\n" +
-                "                \"item\": \"[{\\\"value\\\":\\\"A 徒步 tubu\\\",\\\"grade\\\":\\\"2\\\"},{\\\"value\\\":\\\"B:一览众山小 攀登\\\",\\\"grade\\\":\\\"3\\\"}]\",\n" +
-                "                \"grade\": null,\n" +
-                "                \"multiple\": 0,\n" +
-                "                \"title\": \"你喜欢什么户外活动d d\"\n" +
-                "            }\n" +
-                "        ],\n" +
-                "        \"total\": 7,\n" +
-                "        \"size\": 10,\n" +
-                "        \"current\": 1,\n" +
-                "        \"searchCount\": true,\n" +
-                "        \"pages\": 1\n" +
-                "    },\n" +
-                "    \"fieldErrors\": {}\n" +
-                "}";
-        //假数据
-        // TODO Auto-generated method stub
 
-        ArrayList<Quesition> quesitions=new ArrayList<Quesition>();
+        OkGo.<String>post(NetUrl.DNS + NetUrl.Getquestion)
+                .tag(this)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        try {
+                            JSONObject jsonObject = JSON.parseObject(response.body());
+                            System.out.println("返回数据是"+jsonObject);
+                            int infoCode = jsonObject.getInteger("status");
+                            if (infoCode == 0) {
+                                ArrayList<Quesition> quesitions=new ArrayList<Quesition>();
+                                JSONObject  data = jsonObject.getJSONObject("data");
+                                JSONArray records = data.getJSONArray("records");
+                                for (int i = 0;i < records.size();i++) {
+                                    JSONObject record = records.getJSONObject(i);
+                                    Integer id = record.getInteger("id");
+                                    String title = record.getString("title");
+                                    Integer multiple = record.getInteger("multiple");
+                                    String item = record.getString("item");
+                                    JSONArray answers_list = JSON.parseArray(item);
+                                    ArrayList<Answer> answers = new ArrayList<Answer>();
+                                    for (int j = 0; j < answers_list.size(); j++) {
+                                        JSONObject answer = answers_list.getJSONObject(j);
+                                        String value = answer.getString("value");
+                                        Integer grade = Integer.parseInt(answer.getString("grade"));
+                                        String colors = answer.getString("colors");
+                                        Answer ans = new Answer();
+                                        ans.setAnswerColor(colors);
+                                        ans.setAnswer_content(value);
+                                        ans.setAns_state(0);
+                                        ans.setGrade(grade);
+                                        answers.add(ans);
+                                    }
+                                    Quesition quesition = new Quesition();
+                                    quesition.setQuesitionId(id);
+                                    quesition.setType(multiple);
+                                    quesition.setContent(i + 1 + "、" + title + "：");
+                                    quesition.setAnswers(answers);
+                                    quesition.setQue_state(0);
+                                    quesitions.add(quesition);
+                                }
+                                page=new Page();
+                                page.setPageId("000");
+                                page.setStatus("0");
+                                page.setTitle("性格测试问卷");
+                                page.setQuesitions(quesitions);
+                                //加载布局
+                                initView(page);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
 
-        try {
-            JSONObject jsonObject = JSONObject.parseObject(result);
-            JSONObject  data = jsonObject.getJSONObject("data");
-            JSONArray records = data.getJSONArray("records");
-            for (int i = 0;i < records.size();i++){
-                JSONObject record = records.getJSONObject(i);
-                Integer id = record.getInteger("id");
-                String title = record.getString("title");
-                Integer multiple = record.getInteger("multiple");
-                String item = record.getString("item");
-                JSONArray answers_list = JSON.parseArray(item);
-                ArrayList<Answer> answers=new ArrayList<Answer>();
-                for (int j = 0;j < answers_list.size();j++){
-                    JSONObject answer = answers_list.getJSONObject(j);
-                    String value = answer.getString("value");
-                    Integer grade = Integer.parseInt(answer.getString("grade"));
-                    Answer ans=new Answer();
-                    ans.setAnswerId(j);
-                    ans.setAnswer_content(value);
-                    ans.setAns_state(0);
-                    ans.setGrade(grade);
-                    answers.add(ans);
-                }
-                Quesition quesition=new Quesition();
-                quesition.setQuesitionId(id);
-                quesition.setType(multiple);
-                quesition.setContent(i+1+"、"+title+"：");
-                quesition.setAnswers(answers);
-                quesition.setQue_state(0);
-                quesitions.add(quesition);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        page=new Page();
-        page.setPageId("000");
-        page.setStatus("0");
-        page.setTitle("性格测试问卷");
-        page.setQuesitions(quesitions);
-        //加载布局
-        initView(page);
     }
     private void initView(Page page) {
         // TODO Auto-generated method stub
@@ -353,98 +299,141 @@ public class Questionnaire extends Activity {
                     isState=false;
                     break;
                 }else{
+
                     for(int j=0;j<the_answer_list.size();j++){
                         if(the_answer_list.get(j).getAns_state()==1){
-//                            JSONObject json = new JSONObject();
-//                            try {
-//                                json.put("psychologicalId", page.getPageId());
-//                                json.put("questionId", the_quesition_list.get(i).getQuesitionId());
-//                                json.put("optionId", the_answer_list.get(j).getAnswerId());
-//                                jsonArray.put(json);
-//                            } catch (JSONException e) {
-//                                // TODO Auto-generated catch block
-//                                e.printStackTrace();
-//                            }
-                            Integer choseid = the_answer_list.get(j).getAnswerId();
-                            Integer grade = the_answer_list.get(j).getGrade();
-                            switch(choseid){
-                                case 0 :
-                                    red = red+grade;
-                                    break; //可选
-                                case 1 :
-                                    blue=blue+grade;
-                                    break; //可选
-                                case 2 :
-                                    yellow=yellow+grade;
-                                    break; //可选
-                                case 3 :
-                                    green=green+grade;
-                                    break; //可选
-                                default : //可选
+                            JSONObject json = new JSONObject();
+                            try {
+                                json.put("colors", the_answer_list.get(j).getAnswerColor());
+                                json.put("grade", the_answer_list.get(j).getGrade());
+                                jsonArray.add(json);
+                            } catch (JSONException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
                             }
+//                            Integer choseid = the_answer_list.get(j).getAnswerColor();
+//                            Integer grade = the_answer_list.get(j).getGrade();
+
+//                            switch(choseid){
+//                                case 0 :
+//                                    red = red+grade;
+//                                    break; //可选
+//                                case 1 :
+//                                    blue=blue+grade;
+//                                    break; //可选
+//                                case 2 :
+//                                    yellow=yellow+grade;
+//                                    break; //可选
+//                                case 3 :
+//                                    green=green+grade;
+//                                    break; //可选
+//                                default : //可选
+//                            }
                         }
                     }
                 }
             }
-            JSONArray color_list = new JSONArray();
-            JSONObject json_red = new JSONObject();
-            JSONObject json_blue = new JSONObject();
-            JSONObject json_yellow = new JSONObject();
-            JSONObject json_green = new JSONObject();
-            try {
-                json_red.put("color", "red");
-                json_red.put("grade", red);
-                json_blue.put("color", "blue");
-                json_blue.put("grade", blue);
-                json_yellow.put("color", "yellow");
-                json_yellow.put("grade", yellow);
-                json_green.put("color", "green");
-                json_green.put("grade", green);
-                color_list.add(json_red);
-                color_list.add(json_blue);
-                color_list.add(json_yellow);
-                color_list.add(json_green);
-                System.out.println("颜色列表"+color_list);
-                String jsonArraySort = jsonArraySort(JSON.toJSONString(color_list));
-                System.out.println("排序后："+jsonArraySort);
-            } catch (JSONException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            JSONArray new_array = mgreArray(jsonArray,"grade");
+            System.out.println("整合后"+new_array);
+            String jsonArraySort = jsonArraySort(new_array,"grade",true);
+            System.out.println("排序后"+jsonArraySort);
+            String color1 = JSONArray.parseArray(jsonArraySort).getJSONObject(0).getString("colors");
+            String color2 = JSONArray.parseArray(jsonArraySort).getJSONObject(1).getString("colors");
+            String code = color1+"_"+color2;
+            System.out.println("颜色编码是"+code);
+//            JSONArray color_list = new JSONArray();
+//            JSONObject json_red = new JSONObject();
+//            JSONObject json_blue = new JSONObject();
+//            JSONObject json_yellow = new JSONObject();
+//            JSONObject json_green = new JSONObject();
+//            try {
+//                json_red.put("color", "red");
+//                json_red.put("grade", red);
+//                json_blue.put("color", "blue");
+//                json_blue.put("grade", blue);
+//                json_yellow.put("color", "yellow");
+//                json_yellow.put("grade", yellow);
+//                json_green.put("color", "green");
+//                json_green.put("grade", green);
+//                color_list.add(json_red);
+//                color_list.add(json_blue);
+//                color_list.add(json_yellow);
+//                color_list.add(json_green);
+//                System.out.println("颜色列表"+color_list);
+//                String jsonArraySort = jsonArraySort(JSON.toJSONString(color_list));
+//                System.out.println("排序后："+jsonArraySort);
+//            } catch (JSONException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+        }
+    }
+    /**
+     * 按照JSONArray中的对象的某个字段进行合并(采用fastJson)
+     *
+     *
+     */
+    private static JSONArray mgreArray(JSONArray array, String arrayname) {
+        Map<String, JSONObject> map = new HashMap<>();
+        for (int i = 0; i < array.size(); i++) {
+            JSONObject jsonObject = array.getJSONObject(i);
+            String color = jsonObject.getString("colors"); //合并的条件值
+            if (map.containsKey(color)) {
+                JSONObject tmp = map.get(color);
+                Integer grade = tmp.getInteger(arrayname);
+                grade = grade+jsonObject.getInteger(arrayname);
+                tmp.put(arrayname,grade);
+            } else {
+                map.put(color, jsonObject);
             }
         }
+        JSONArray newArray = new JSONArray();
+        newArray.addAll(map.values());
+        return newArray;
     }
     /**
      * 按照JSONArray中的对象的某个字段进行排序(采用fastJson)
      *
-     * @param jsonArrStr
-     *            json数组字符串
      *
      */
-    public static String jsonArraySort(String jsonArrStr) {
-        JSONArray jsonArr = JSON.parseArray(jsonArrStr);
+    public static String jsonArraySort(JSONArray jsonArr, final String sortKey, final boolean is_desc) {
         JSONArray sortedJsonArray = new JSONArray();
         List<JSONObject> jsonValues = new ArrayList<JSONObject>();
         for (int i = 0; i < jsonArr.size(); i++) {
             jsonValues.add(jsonArr.getJSONObject(i));
         }
         Collections.sort(jsonValues, new Comparator<JSONObject>() {
-            // You can change "Name" with "ID" if you want to sort by ID
-            private static final String KEY_NAME = "grade";
+            private  final String KEY_NAME = sortKey;
 
             @Override
             public int compare(JSONObject a, JSONObject b) {
-                String valA = new String();
-                String valB = new String();
+                int valA = 0;
+                int valB = 0;
                 try {
-                    // 这里是a、b需要处理的业务，需要根据你的规则进行修改。
-                    valA = a.getString(KEY_NAME);
-                    valB = b.getString(KEY_NAME);
+                    valA = a.getIntValue(KEY_NAME);
+                    valB = b.getIntValue(KEY_NAME);
                 } catch (JSONException e) {
-                    // do something
+                    e.printStackTrace();
                 }
-                return -valA.compareTo(valB);
-                // if you want to change the sort order, simply use the following:
-                // return -valA.compareTo(valB);
+
+                if (is_desc){
+                    if(valA < valB){
+                        return 1;
+                    }
+                    if(valA == valB){
+                        return 0;
+                    }
+                    return -1;
+                } else {
+                    if(valA > valB){
+                        return 1;
+                    }
+                    if(valA == valB){
+                        return 0;
+                    }
+                    return -1;
+                }
+
             }
         });
         for (int i = 0; i < jsonArr.size(); i++) {

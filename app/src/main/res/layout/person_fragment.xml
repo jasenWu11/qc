@@ -331,6 +331,46 @@
                     android:background="@color/e0" />
 
                 <RelativeLayout
+                    android:id="@+id/introFile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="简历文件"
+                        android:textColor="@color/three_repeat"
+                        android:textSize="12sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/right" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <View
+                    style="@style/HorizontalLines"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/e0" />
+
+                <RelativeLayout
                     android:id="@+id/connectR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

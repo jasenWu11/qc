@@ -21,7 +21,8 @@ public class NetUrl {
     public static final String FindHotInfo = "home/getHomeIndustry.do";
 
     public static final String GetInfo = "student/getStudentResume.do";
-
+    //获取问卷题目
+    public static final String Getquestion = "/question/list";
     //完善个人简历
     public static final String UpdateInfo = "student/updateResume.do";
     //图片上传
