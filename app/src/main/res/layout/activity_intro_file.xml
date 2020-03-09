@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffffff">
+    android:background="#ffffffff"
+    android:orientation="vertical">
+
     <RelativeLayout
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titleBarHeight"
-        android:paddingLeft="10dp"
         android:background="@color/blue_1e"
+        android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
         <TextView
@@ -18,12 +20,12 @@
             android:layout_centerInParent="true"
             android:text="简历文件"
             android:textColor="@color/ff"
-            android:textSize="15sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/set"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
@@ -41,19 +43,38 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:src="@mipmap/back_white" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
+                android:layout_marginLeft="5dp"
                 android:text="返回"
                 android:textColor="@color/ff"
-                android:textSize="13sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
     </RelativeLayout>
 
-</RelativeLayout>
+    <cn.com.qc.view.SwipeToLoadLayout
+        android:id="@+id/swipeToLoadLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/swipe_refresh_header"
+            layout="@layout/header_view" />
+
+        <ListView
+            android:id="@+id/swipe_target"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none" />
+
+        <include
+            android:id="@+id/swipe_load_more_footer"
+            layout="@layout/footer_view" />
+    </cn.com.qc.view.SwipeToLoadLayout>
+</LinearLayout>

@@ -27,9 +27,9 @@ import okhttp3.OkHttpClient;
 
 public class App extends MobApplication {
 
-    public static final int ConnectionTime = 2000;
-    public static final int ReadTimeOutTime = 2000;
-    public static final int WriteTimeOutTime = 2000;
+    public static final int ConnectionTime = 5000;
+    public static final int ReadTimeOutTime = 5000;
+    public static final int WriteTimeOutTime = 5000;
     private static final String TAG = "Init";
 
     public String city = "";

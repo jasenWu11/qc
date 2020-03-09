@@ -2,7 +2,7 @@ package cn.com.qc.main;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ContentResolver;
+import com.lzy.okgo.model.Response;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
@@ -12,35 +12,124 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ListView;
 
 import com.hb.dialog.myDialog.MyAlertDialog;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.StringCallback;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.com.qc.R;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import cn.com.qc.adapter.IntroAdapter;
+import cn.com.qc.help.NetUrl;
+import cn.com.qc.javabean.IntroInfo;
+import cn.com.qc.utils.Tools;
+import cn.com.qc.view.SwipeToLoadLayout;
+import cn.com.qc.yinter.OnLoadMoreListener;
+import cn.com.qc.yinter.OnRefreshListener;
 
-public class IntroFileActivity extends AppCompatActivity {
+public class IntroFileActivity extends AppCompatActivity implements OnRefreshListener, OnLoadMoreListener {
+    ListView swipeTarget;
+    SwipeToLoadLayout swipeToLoadLayout;
+    private int pageNumber = 1;
+    private IntroAdapter introAdapter;
+    private List<IntroInfo> introInfoList;
+    private Integer total_pages = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro_file);
+        swipeTarget = (ListView) findViewById(R.id.swipe_target);
+        swipeToLoadLayout = (SwipeToLoadLayout) findViewById(R.id.swipeToLoadLayout);
+        introInfoList = new ArrayList<>();
+        initData(pageNumber);
+        introAdapter = new IntroAdapter(introInfoList, this);
+        swipeTarget.setAdapter(introAdapter);
+        swipeToLoadLayout.setOnRefreshListener(this);
+        swipeToLoadLayout.setOnLoadMoreListener(this);
+    }
+    public void initData(int pageNumber) {
+        OkGo.<String>post(NetUrl.DNS + NetUrl.Cvlist)
+                .tag(this)
+                //.params("WorkPlace", city)
+                .params("pageIndex", pageNumber)
+                .params("pageSize", 10)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response.body());
+                            int infoCode = jsonObject.getInt("status");
+                            if (infoCode == 0) {
+                                JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                                total_pages = jsonObject1.getInt("pages");
+                                JSONArray jsonArray = jsonObject1.getJSONArray("records");
+                                System.out.println("返回的数据是"+jsonArray);
+                                if (jsonArray.length() == 0) {
+
+                                } else {
+                                    introInfoList = new ArrayList<>();
+                                    for (int i = 0; i < jsonArray.length(); i++) {
+                                        JSONObject jsonObject2 = jsonArray.getJSONObject(i);
+                                        IntroInfo introInfo = new IntroInfo();
+                                        introInfo.setIndex(i+1);
+                                        introInfo.setCreateTime(jsonObject2.getString("createTime"));
+                                        introInfo.setId(jsonObject2.getInt("id"));
+                                        introInfo.setFileName(jsonObject2.getString("fileName"));
+                                        introInfo.setFileId(jsonObject2.getString("fileId"));
+                                        introInfo.setPaths(jsonObject2.getString("paths"));
+                                        introInfoList.add(introInfo);
+                                    }
+                                    introAdapter.addData(introInfoList);
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
     }
 
+
+    @Override
+    public void onRefresh() {
+        swipeToLoadLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                introAdapter.clear();
+                pageNumber = 1;
+                initData(pageNumber);
+                swipeToLoadLayout.setRefreshing(false);
+            }
+        }, 100);
+    }
+
+    @Override
+    public void onLoadMore() {
+        if(pageNumber>=total_pages){
+            Tools.toast(IntroFileActivity.this, "已全部加载完成!");
+            swipeToLoadLayout.setLoadingMore(false);
+        }else{
+            swipeToLoadLayout.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    pageNumber++;
+                    initData(pageNumber);
+                    swipeToLoadLayout.setLoadingMore(false);
+                }
+            }, 100);
+        }
+    }
     // 打开系统的文件选择器
     public void pickFile(View view) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -63,13 +152,16 @@ public class IntroFileActivity extends AppCompatActivity {
             if ("file".equalsIgnoreCase(uri.getScheme())) {//使用第三方应用打开
                 path = uri.getPath();
                 ShowDiglog(path);
+                System.out.println("获得地址"+path);
                 return;
             }
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {//4.4以后
                 path = getPath(this, uri);
+                System.out.println("获得地址"+path);
                 ShowDiglog(path);
             } else {//4.4以下下系统调用方法
                 path = getRealPathFromURI(uri);
+                System.out.println("获得地址"+path);
                 ShowDiglog(path);
             }
         }
@@ -204,34 +296,29 @@ public class IntroFileActivity extends AppCompatActivity {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
     }
 
-    // 使用OkHttp上传文件
-    public void uploadFile(String path) {
+    public void uploadFile(String path){
         File file = new File(path);
-        OkHttpClient client = new OkHttpClient();
-        MediaType contentType = MediaType.parse("text/plain"); // 上传文件的Content-Type
-        RequestBody body = RequestBody.create(contentType, file); // 上传文件的请求体
-        Request request = new Request.Builder()
-                .url("http://192.168.163.195:8092/PartTime/user/info?id=2") // 上传地址
-                .post(body)
-                .build();
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                // 文件上传成功
-                if (response.isSuccessful()) {
-                    Log.i("Haoxueren", "onResponse: " + response.body().string());
-                } else {
-                    Log.i("Haoxueren", "onResponse: " + response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-                // 文件上传失败
-                Log.i("Haoxueren", "onFailure: " + e.getMessage());
-            }
-        });
+        OkGo.<String>post(NetUrl.DNS + NetUrl.UploadCv)
+                .tag(this)
+                .params("file", file)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response.body());
+                            System.out.println("输出结果"+jsonObject);
+                            int infoCode = jsonObject.getInt("status");
+                            if (infoCode == 0) {
+                                Tools.toast(IntroFileActivity.this, "简历上传成功!");
+                                introAdapter.clear();
+                                pageNumber = 1;
+                                initData(pageNumber);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
     }
 
     public void ShowDiglog(final String path){

@@ -23,10 +23,19 @@ public class NetUrl {
     public static final String GetInfo = "student/getStudentResume.do";
     //获取问卷题目
     public static final String Getquestion = "/question/list";
+
     //完善个人简历
     public static final String UpdateInfo = "student/updateResume.do";
+
+    //上传简历文件
+    public static final String UploadCv = "/cv/upload";
+
+    //获取简历列表
+    public static final String Cvlist = "/cv/user/list";
+
     //图片上传
     public static final String upImage = "img/fildUpload.do";
+
     //多张图片上传
     public static final String upImageMore = "img/fildUploads.do";
 

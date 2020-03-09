@@ -43,8 +43,9 @@ public class RecruitFragment extends Fragment implements OnRefreshListener, OnLo
     Unbinder unbinder;
     private List<JobInfo> jobInfoList;
     private JobAdapter jobAdapter;
-    private int pageNumber = 0;
+    private int pageNumber = 1;
     private String city = "东莞";
+    private Integer total_pages = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class RecruitFragment extends Fragment implements OnRefreshListener, OnLo
                 .tag(this)
                 //.params("WorkPlace", city)
                 .params("pageIndex", pageNumber)
-                .params("pageSize", 6)
+                .params("pageSize", 10)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
@@ -73,8 +74,9 @@ public class RecruitFragment extends Fragment implements OnRefreshListener, OnLo
                             int infoCode = jsonObject.getInt("status");
                             if (infoCode == 0) {
                                 JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                                total_pages = jsonObject1.getInt("pages");
                                 JSONArray jsonArray = jsonObject1.getJSONArray("records");
-                                System.out.print("返回的数据是"+jsonArray);
+                                System.out.println("返回的数据是"+jsonArray);
                                 if (jsonArray.length() == 0) {
 
                                 } else {
@@ -114,7 +116,7 @@ public class RecruitFragment extends Fragment implements OnRefreshListener, OnLo
             @Override
             public void run() {
                 jobAdapter.clear();
-                pageNumber = 0;
+                pageNumber = 1;
                 initData(pageNumber);
                 swipeToLoadLayout.setRefreshing(false);
             }
@@ -123,13 +125,18 @@ public class RecruitFragment extends Fragment implements OnRefreshListener, OnLo
 
     @Override
     public void onLoadMore() {
-        swipeToLoadLayout.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                pageNumber++;
-                initData(pageNumber);
-                swipeToLoadLayout.setLoadingMore(false);
-            }
-        }, 100);
+        if(pageNumber>=total_pages){
+            Tools.toast(getActivity(), "已全部加载完成!");
+            swipeToLoadLayout.setLoadingMore(false);
+        }else{
+            swipeToLoadLayout.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    pageNumber++;
+                    initData(pageNumber);
+                    swipeToLoadLayout.setLoadingMore(false);
+                }
+            }, 100);
+        }
     }
 }

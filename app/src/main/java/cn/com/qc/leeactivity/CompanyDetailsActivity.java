@@ -131,7 +131,6 @@ public class CompanyDetailsActivity extends BaseActivity {
                 } else {
                     OkGo.<String>post(NetUrl.DNS + NetUrl.applyJob)
                             .tag(this)
-                            .headers("Cookie", "JSESSIONID=6A6E0326DC4771AF90809B54B9C93827")
                             .params("JobId", id)
                             .execute(new StringCallback() {
                                 @Override
@@ -142,6 +141,11 @@ public class CompanyDetailsActivity extends BaseActivity {
                                         int infoCode = jsonObject.getInt("status");
                                         if (infoCode == 0) {
                                             Tools.toast(CompanyDetailsActivity.this, "您的申请已提交!");
+                                            apply.setBackgroundColor(getResources().getColor(R.color.cc));
+                                            apply.setClickable(false);
+                                        }else{
+                                            String msg = jsonObject.getString("msg");
+                                            Tools.toast(CompanyDetailsActivity.this, msg);
                                             apply.setBackgroundColor(getResources().getColor(R.color.cc));
                                             apply.setClickable(false);
                                         }

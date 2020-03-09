@@ -83,8 +83,8 @@ public class MyIntroductionActivity extends YBaseActivity<MyIntroductionPresente
 
     @Override
     public void init() {
-        userIntroInfo = new UserIntroInfo();
         app = (App) getApplication();
+        userIntroInfo = new UserIntroInfo();
         p.getAllDatas(NetUrl.DNS + NetUrl.GetInfo,app.phone,app.token);
     }
 
