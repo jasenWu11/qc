@@ -103,4 +103,9 @@ dependencies {
     compile 'com.alibaba:fastjson:1.2.56'
     //弹窗组件
     compile 'com.github.HanHuoBin:BaseDialog:1.2.0'
+    //预览pdf文件
+    compile ('es.voghdev.pdfviewpager:library:1.0.3'){
+        exclude module: 'support-v4'
+        exclude group: 'com.android.support'
+    }
 }

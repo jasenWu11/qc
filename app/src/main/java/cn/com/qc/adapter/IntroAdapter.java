@@ -25,6 +25,7 @@ import butterknife.ButterKnife;
 import cn.com.qc.R;
 import cn.com.qc.javabean.IntroInfo;
 import cn.com.qc.leeactivity.CompanyDetailsActivity;
+import cn.com.qc.leeactivity.WatchIntroActivity;
 
 public class IntroAdapter extends BaseAdapter {
     private List<IntroInfo> list;
@@ -66,52 +67,11 @@ public class IntroAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(context, CompanyDetailsActivity.class);
-//                intent.putExtra("id", list.get(position).getId());
-//                context.startActivity(intent);
                 String pdf_url = list.get(position).getPaths()+list.get(position).getFileId();
-                try {
-                    URL url = new URL(pdf_url);
-                    HttpURLConnection connection = (HttpURLConnection)
-                            url.openConnection();
-                    connection.setRequestMethod("GET");
-                    connection.setDoInput(true);
-                    connection.setDoOutput(true);
-                    connection.setUseCaches(false);
-                    connection.setConnectTimeout(5000);
-                    connection.setReadTimeout(5000);
-                    //实现连接
-                    connection.connect();
-
-                    if (connection.getResponseCode() == 200) {
-                        InputStream is = connection.getInputStream();
-                        //以下为下载操作
-                        byte[] arr = new byte[1];
-                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                        BufferedOutputStream bos = new BufferedOutputStream(baos);
-                        int n = is.read(arr);
-                        while (n > 0) {
-                            bos.write(arr);
-                            n = is.read(arr);
-                        }
-                        bos.close();
-                        String path = Environment.getExternalStorageDirectory()
-                                + "/download/";
-                        String[] name = pdf_url.split("/");
-                        path = path + name[name.length - 1];
-                        File file = new File(path);
-                        FileOutputStream fos = new FileOutputStream(file);
-                        fos.write(baos.toByteArray());
-                        fos.close();
-                        //关闭网络连接
-                        connection.disconnect();
-                        Log.d("下载完成","下载完成");
-                        openPDF(file);//打开PDF文件
-                    }
-                } catch (Exception e) {
-                    // TODO: handle exception
-                    System.out.println("错误"+e.getMessage());
-                }
+                Intent intent = new Intent(context, WatchIntroActivity.class);
+                intent.putExtra("pdf_url", pdf_url);
+                intent.putExtra("fileName", list.get(position).getFileName());
+                context.startActivity(intent);
                 System.out.println("查看简历文件"+pdf_url);
             }
         });

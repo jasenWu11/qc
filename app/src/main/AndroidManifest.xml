@@ -65,6 +65,7 @@
         <activity android:name=".leeactivity.CompanyRecruitActivity" />
         <activity android:name=".main.MyIntroductionActivity" />
         <activity android:name=".main.IntroFileActivity" />
+        <activity android:name=".leeactivity.WatchIntroActivity" />
         <activity android:name=".main.EditIntroductionActivity" />
         <activity android:name=".main.CardCheckActivity" />
         <activity
